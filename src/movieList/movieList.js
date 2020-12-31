@@ -8,11 +8,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import CardColumns from 'react-bootstrap/CardColumns';
 
-function Main() {
+function MovieList() {
   return (
     <CardColumns className="Movie-container">
         <Card style={{ width: '18rem' }}>
-            <a href="#meh">
+            <a href="/movie">
                 <Card.Img variant="top" src="/marvel_the_avengers.jpeg" />
             </a>
             <Card.Body>
@@ -31,7 +31,7 @@ function Main() {
             </Card.Footer>
         </Card>
         <Card style={{ width: '18rem' }}>
-            <a href="#meh">
+            <a href="/movie">
                 <Card.Img variant="top" src="/sw_rise_of_skywalker.jpeg" />
             </a>
             <Card.Body>
@@ -50,7 +50,7 @@ function Main() {
             </Card.Footer>
         </Card>
         <Card style={{ width: '18rem' }}>
-            <a href="#meh">
+            <a href="/movie">
                 <Card.Img variant="top" src="/sw_the_mandalorian.jpeg" />
             </a>
             <Card.Body>
@@ -72,4 +72,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default MovieList;

@@ -1,31 +1,36 @@
 import './App.css';
-// import Login from './authentication/login';
-import Main from './main/main';
+import Login from './authentication/login';
+import MovieList from './movieList/movieList';
+import Movie from './movieList/movie';
 import Container  from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
+import NavigationBar from './navigationBar/navigationBar';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <Navbar fixed="top" sticky="top" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">
-          Four Star 
-        </Navbar.Brand>
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-          </Nav>
-          <Form inline>
-            <a href="#logout" className="Sign-out">Sign Out</a>
-            <FormControl type="text" placeholder="Filter" className="mr-sm-2" />
-          </Form>
-        </Navbar.Collapse>
-      </Navbar>
+      <NavigationBar></NavigationBar>
       <Container>
-        <Main></Main>
+        <Router>
+          <Switch>
+            <Route path='/login'>
+              <Login></Login>
+            </Route>
+            <Route path='/logout'>
+              <Login></Login>
+            </Route>
+            <Route path='/main'>
+              <MovieList></MovieList>
+            </Route>
+            <Route path='/movie'>
+              <Movie></Movie>
+            </Route>
+          </Switch>
+        </Router>
       </Container>
     </div>
   );
