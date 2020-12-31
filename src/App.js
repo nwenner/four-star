@@ -7,7 +7,8 @@ import NavigationBar from './navigationBar/navigationBar';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
       <Container>
         <Router>
           <Switch>
+            <Route exact path="/">
+              <Redirect to="/main" />
+            </Route>
             <Route path='/login'>
               <Login></Login>
             </Route>
