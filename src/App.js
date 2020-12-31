@@ -10,7 +10,7 @@ import FormControl from 'react-bootstrap/FormControl';
 function App() {
   return (
     <div className="App">
-      <Navbar bg="dark" variant="dark">
+      <Navbar fixed="top" sticky="top" bg="dark" variant="dark">
         <Navbar.Brand href="#home">
           Four Star 
         </Navbar.Brand>
@@ -24,7 +24,7 @@ function App() {
           </Form>
         </Navbar.Collapse>
       </Navbar>
-      <Container >
+      <Container>
         <Main></Main>
       </Container>
     </div>

@@ -13,6 +13,10 @@
   padding-right: 2rem;
 }
 
+.Movie-container {
+  padding-top: 2rem;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -31,17 +35,17 @@
 }
 
 a:link {
-  color: orange;
+  color: #FFCC00;
 }
 
 a:visited {
-  color: orange;
+  color: #FFCC00;
 }
 
 a:hover {
-  color: orange;
+  color: #FFCC00;
 }
 
 a:active {
-  color: orange;
+  color: #FFFFFF;
 }
