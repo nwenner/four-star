@@ -1,10 +1,16 @@
 .App {
   text-align: center;
+  background-color: #282c34;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.Sign-out {
+  font-size: small;
+  padding-right: 2rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -24,15 +30,18 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+a:link {
+  color: orange;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a:visited {
+  color: orange;
+}
+
+a:hover {
+  color: orange;
+}
+
+a:active {
+  color: orange;
 }

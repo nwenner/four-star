@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+// import Login from './authentication/login';
+import Main from './main/main';
+import Container  from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="#home">
+          Four Star 
+        </Navbar.Brand>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+          </Nav>
+          <Form inline>
+            <a href="#logout" className="Sign-out">Sign Out</a>
+            <FormControl type="text" placeholder="Filter" className="mr-sm-2" />
+          </Form>
+        </Navbar.Collapse>
+      </Navbar>
+      <Container >
+        <Main></Main>
+      </Container>
     </div>
   );
 }
