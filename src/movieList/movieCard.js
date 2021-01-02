@@ -1,5 +1,3 @@
-import React, {useState} from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 
@@ -7,11 +5,10 @@ import Card from 'react-bootstrap/Card';
 
 function MovieCard(data) {
 
-
   return (
     <Card style={{ width: '18rem' }}>
         <a href="/movie">
-            <Card.Img variant="top" src={data.movie.imgsrc} />
+            <Card.Img variant="top" src={data.movie.imgsrc ? data.movie.imgsrc : '/placeholder.jpg'} />
         </a>
         <Card.Body>
             <Card.Title>{data.movie.title}</Card.Title>
