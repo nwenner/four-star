@@ -51,7 +51,7 @@ function NavigationBar() {
     return (
         <Navbar fixed="top" sticky="top" bg="dark" variant="dark">
             <Navbar.Brand href="/main">
-            Four Star 
+            Four Star
             </Navbar.Brand>
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">

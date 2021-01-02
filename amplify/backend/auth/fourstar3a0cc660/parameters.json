@@ -1,6 +1,6 @@
 {
     "identityPoolName": "fourstar3a0cc660_identitypool_3a0cc660",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "fourst3a0cc660",
     "userPoolName": "fourstar3a0cc660_userpool_3a0cc660",
     "autoVerifiedAttributes": [

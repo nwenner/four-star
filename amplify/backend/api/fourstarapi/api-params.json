@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/movies",
+            "lambdaFunction": "getMovies",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/movies"
+        }
+    ],
+    "resourceName": "fourstarapi",
+    "apiName": "fourstarapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "getMovies"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-fourstar-dev-212316-authRole",
+        "unAuthRoleName": "amplify-fourstar-dev-212316-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "getMovies",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
