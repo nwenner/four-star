@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/movies",
+            "lambdaFunction": "movies",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/movies"
+        }
+    ],
+    "resourceName": "fourstar",
+    "apiName": "fourstar",
+    "functionArns": [
+        {
+            "lambdaFunction": "movies"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-fourstar-dev-112717-authRole",
+        "unAuthRoleName": "amplify-fourstar-dev-112717-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "movies",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
