@@ -1,7 +1,4 @@
 {
-  "providers": [
-    "awscloudformation"
-  ],
   "projectName": "fourstar",
   "version": "3.0",
   "frontend": "javascript",
@@ -13,5 +10,8 @@
       "BuildCommand": "yarn build",
       "StartCommand": "yarn start"
     }
-  }
+  },
+  "providers": [
+    "awscloudformation"
+  ]
 }

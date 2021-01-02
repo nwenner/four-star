@@ -1,23 +1,23 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Parameters": {
-        "authfourstar3a0cc660UserPoolId": {
+        "authfourstara06b407dUserPoolId": {
             "Type": "String",
-            "Default": "authfourstar3a0cc660UserPoolId"
+            "Default": "authfourstara06b407dUserPoolId"
         },
         
-        "authfourstar3a0cc660IdentityPoolId": {
+        "authfourstara06b407dIdentityPoolId": {
             "Type": "String",
-            "Default": "authfourstar3a0cc660IdentityPoolId"
+            "Default": "authfourstara06b407dIdentityPoolId"
         },
         
-        "authfourstar3a0cc660AppClientID": {
+        "authfourstara06b407dAppClientID": {
             "Type": "String",
-            "Default": "authfourstar3a0cc660AppClientID"
+            "Default": "authfourstara06b407dAppClientID"
         },
-        "authfourstar3a0cc660AppClientIDWeb": {
+        "authfourstara06b407dAppClientIDWeb": {
             "Type": "String",
-            "Default": "authfourstar3a0cc660AppClientIDWeb"
+            "Default": "authfourstara06b407dAppClientIDWeb"
         },
         "AuthRoleArn": {
             "Type": "String"
@@ -41,26 +41,26 @@
     },
     "Resources": {
     
-        "AdminsGroup": {
+        "adminGroup": {
           "Type" : "AWS::Cognito::UserPoolGroup",
           "Properties" : {
-              "GroupName" : "Admins",
+              "GroupName" : "admin",
               "Precedence" : 1,
               
               "RoleArn" : {
                 "Fn::GetAtt": [
-                    "AdminsGroupRole",
+                    "adminGroupRole",
                     "Arn"
                 ]
               },
               
               "UserPoolId" : {
-                "Ref": "authfourstar3a0cc660UserPoolId"
+                "Ref": "authfourstara06b407dUserPoolId"
               } 
             }
         },
         
-        "AdminsGroupRole": {
+        "adminGroupRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
                 "RoleName":{
@@ -68,9 +68,9 @@
                         "",
                         [
                           {
-                            "Ref": "authfourstar3a0cc660UserPoolId"
+                            "Ref": "authfourstara06b407dUserPoolId"
                           },
-                          "-AdminsGroupRole"
+                          "-adminGroupRole"
                         ]
                     ]
                 },
@@ -85,7 +85,7 @@
                             },
                             "Action": "sts:AssumeRoleWithWebIdentity",
                             "Condition": {
-                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authfourstar3a0cc660IdentityPoolId"}},
+                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authfourstara06b407dIdentityPoolId"}},
                               "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "authenticated"}
                             }
                         }
@@ -111,7 +111,7 @@
                                 "",
                                 [
                                   
-                                  "fourstar3a0cc660",
+                                  "fourstara06b407d",
                                   "-ExecutionRole-",
                                   {
                                     "Ref": "env"
@@ -270,16 +270,16 @@
                     "Ref": "UnauthRoleArn"
                 },
                 "identityPoolId": {
-                    "Ref": "authfourstar3a0cc660IdentityPoolId"
+                    "Ref": "authfourstara06b407dIdentityPoolId"
                 },
                 "userPoolId": {
-                    "Ref": "authfourstar3a0cc660UserPoolId"
+                    "Ref": "authfourstara06b407dUserPoolId"
                 },
                 "appClientIDWeb": {
-                    "Ref": "authfourstar3a0cc660AppClientIDWeb"
+                    "Ref": "authfourstara06b407dAppClientIDWeb"
                 },
                 "appClientID": {
-                    "Ref": "authfourstar3a0cc660AppClientID"
+                    "Ref": "authfourstara06b407dAppClientID"
                 },
                 "region": {
                     "Ref": "AWS::Region"
@@ -295,10 +295,10 @@
     
     "Outputs": {
       
-        "AdminsGroupRole": {
+        "adminGroupRole": {
             "Value": {
                 "Fn::GetAtt": [
-                    "AdminsGroupRole",
+                    "adminGroupRole",
                     "Arn"
                 ]
             }

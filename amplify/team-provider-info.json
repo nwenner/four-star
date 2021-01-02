@@ -1,27 +1,21 @@
 {
-    "dev": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-fourstar-dev-212316-authRole",
-            "UnauthRoleArn": "arn:aws:iam::324057214384:role/amplify-fourstar-dev-212316-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::324057214384:role/amplify-fourstar-dev-212316-authRole",
-            "Region": "us-east-2",
-            "DeploymentBucketName": "amplify-fourstar-dev-212316-deployment",
-            "UnauthRoleName": "amplify-fourstar-dev-212316-unauthRole",
-            "StackName": "amplify-fourstar-dev-212316",
-            "StackId": "arn:aws:cloudformation:us-east-2:324057214384:stack/amplify-fourstar-dev-212316/87ab8cf0-4b17-11eb-8465-02a5ea93bf14",
-            "AmplifyAppId": "dc7c0a37feynq"
-        },
-        "categories": {
-            "auth": {
-                "fourstar3a0cc660": {},
-                "userPoolGroups": {}
-            },
-            "hosting": {
-                "amplifyhosting": {
-                    "appId": "dc7c0a37feynq",
-                    "type": "cicd"
-                }
-            }
-        }
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-fourstar-dev-112717-authRole",
+      "UnauthRoleArn": "arn:aws:iam::324057214384:role/amplify-fourstar-dev-112717-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::324057214384:role/amplify-fourstar-dev-112717-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-fourstar-dev-112717-deployment",
+      "UnauthRoleName": "amplify-fourstar-dev-112717-unauthRole",
+      "StackName": "amplify-fourstar-dev-112717",
+      "StackId": "arn:aws:cloudformation:us-east-2:324057214384:stack/amplify-fourstar-dev-112717/c3f48900-4d1f-11eb-bdf1-025d7b8a1796",
+      "AmplifyAppId": "d2n9q8trx4gps6"
+    },
+    "categories": {
+      "auth": {
+        "fourstara06b407d": {},
+        "userPoolGroups": {}
+      }
     }
+  }
 }
