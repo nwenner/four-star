@@ -102,11 +102,13 @@ function CommentSection() {
             </div>
             <div className="Comment-submission-container">
                 <span>Rating:</span>
-                <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
-                <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
-                <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
-                <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
-                <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
+                <div className="Comment-submission-rating">
+                    <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
+                </div>
             </div>
             <div>
                 <Button variant="warning">Submit</Button>

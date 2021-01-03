@@ -65,10 +65,16 @@
 
 .Comment-upvote-container {
   margin-right: 0.5rem;
+  cursor: pointer;
 }
 
 .Comment-submission-container {
   margin-bottom: 0.5rem;
+}
+
+.Comment-submission-rating {
+  display: inline;
+  cursor: pointer;
 }
 
 .Yellow-star > path {
