@@ -5,9 +5,6 @@ Licensed under the Apache License, Version 2.0 (the "License"). You may not use 
 or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and limitations under the License.
 */
-
-
-
 const AWS = require('aws-sdk')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 var bodyParser = require('body-parser')
@@ -69,7 +66,13 @@ app.get(path, function (req, res) {
     }
     res.json({
       data: data.Items.map(item => {
-        return item;
+        return {
+          id: item.id,
+          title: item.title,
+          description: item.description,
+          rating: item.rating,
+          imgsrc: item.imgsrc
+        };
       })
     });
   });
