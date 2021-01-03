@@ -34,30 +34,29 @@ function Movie() {
             />
             <Media.Body>
             <h5>{movie.title}</h5>
-                <Container className="movieTextLabelContainer">
+                <Container className="Movie-text-label-container">
                     <Row>
-                        <Col xs={2} className="movieTextLabel">Genre</Col>
-                        <Col xs={10} className="movieText">{movie.genre ? movie.genre : 'N/A'}</Col>
+                        <Col xs={2} className="Movie-text-label">Genre</Col>
+                        <Col xs={10} className="Movie-text">{movie.genre ? movie.genre : 'N/A'}</Col>
                     </Row>
                     <Row>
-                        <Col xs={2} className="movieTextLabel">Language</Col>
-                        <Col xs={10} className="movieText">{movie.language ? movie.language : 'N/A'}</Col>
+                        <Col xs={2} className="Movie-text-label">Language</Col>
+                        <Col xs={10} className="Movie-text">{movie.language ? movie.language : 'N/A'}</Col>
                     </Row>
                     <Row>
-                        <Col xs={2} className="movieTextLabel">Release Date</Col>
-                        <Col xs={10} className="movieText">{movie.releaseDate ? movie.releaseDate : 'N/A'}</Col>
+                        <Col xs={2} className="Movie-text-label">Release Date</Col>
+                        <Col xs={10} className="Movie-text">{movie.releaseDate ? movie.releaseDate : 'N/A'}</Col>
                     </Row>
                     <Row>
-                        <Col xs={2} className="movieTextLabel">Cast</Col>
-                        <Col xs={10} className="movieText">{movie.cast ? movie.cast : 'N/A'}</Col>
+                        <Col xs={2} className="Movie-text-label">Cast</Col>
+                        <Col xs={10} className="Movie-text">{movie.cast ? movie.cast : 'N/A'}</Col>
                     </Row>
                 </Container>
             </Media.Body>
         </Media>
         <div style={{backgroundColor: 'white'}}>
-            <p>{movie.description}</p>
-
-                <FormControl as='textarea' value='Type a comment here' style={{paddingLeft: '2px', paddingRight: '2rem'}}></FormControl>
+            <div className="Movie-plot">{movie.plot}</div>
+            <FormControl as='textarea' value='Type a comment here' style={{paddingLeft: '2px', paddingRight: '2rem'}}></FormControl>
         </div>
     </div>
   );
