@@ -3,10 +3,10 @@ import { API } from "aws-amplify";
 import { useParams } from 'react-router-dom';
 
 import Media from 'react-bootstrap/Media';
-import FormControl from 'react-bootstrap/FormControl';
 import { Col, Container, Row } from "react-bootstrap";
 
 import MovieRating from './movieRating';
+import CommentSection from "../comments/commentSection";
 
 function Movie() {
 
@@ -61,7 +61,7 @@ function Movie() {
         </Media>
         <div style={{backgroundColor: 'white'}}>
             <div className="Movie-plot">{movie.plot}</div>
-            <FormControl as='textarea' value='Type a comment here' style={{paddingLeft: '2px', paddingRight: '2rem'}}></FormControl>
+            <CommentSection></CommentSection>
         </div>
     </div>
   );

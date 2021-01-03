@@ -58,6 +58,19 @@
   padding: 2rem;
 }
 
+.Comment-container {
+  display: inline;
+  margin-left: 1rem;
+}
+
+.Comment-upvote-container {
+  margin-right: 0.5rem;
+}
+
+.Comment-submission-container {
+  margin-bottom: 0.5rem;
+}
+
 .Yellow-star > path {
   color: "#FFCC00"
 }
