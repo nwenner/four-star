@@ -20,8 +20,8 @@ function useProvideAuth() {
     const [user, setUser] = useState(null);
     const [userGroups, setUserGroups] = useState(null);
     
-    const signin = (email, password) => {
-        Auth.signIn(email, password);
+    const signin = async (email, password) => {
+        return Auth.signIn(email, password);
     };
   
     const signout = () => {

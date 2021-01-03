@@ -23,7 +23,7 @@ function NavigationBar() {
                     <div>
                         <span style={{color: 'red', marginRight: "5px"}}><b>{auth.userGroups ? 'Admin' : null}</b></span>
                         <span style={{marginRight: "5px"}}>Welcome <b>{auth.user ? auth.user.attributes.email : null}</b></span>
-                        <a href="/main" className="Sign-out" onClick={() => auth.signOut()}>Sign Out</a>
+                        <a href="/main" className="Sign-out" onClick={() => auth.signout()}>Sign Out</a>
                     </div>
                 }
                 {!auth.user &&

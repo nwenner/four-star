@@ -1,26 +1,30 @@
 import React, { useState } from "react";
-import { Auth } from "aws-amplify";
-
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useHistory, useLocation } from "react-router-dom";
+import { useAuth } from "./useAuth";
 
 function Login() {
+    const auth = useAuth();
+    const history = useHistory();
+    const location = useLocation();
 
     const [email, setEmail] = useState();
     const [pass, setPass] = useState();
     const [errorMessage, setErrorMessage] = useState();
 
+
     async function login(event) {
         event.preventDefault();
         try {
             console.log('attempting to sign in');
-            let result = await Auth.signIn(email, pass);
+            let result = await auth.signin(email, pass);
             if (result) {
-                console.log(result);
-                window.location.href = "/";
+                let { from } = location.state || { from: { pathname: "/" } };
+                history.replace(from);
             }
-        } catch (err) {
-        setErrorMessage(err.message);
+        } catch (error) {
+            setErrorMessage(error.message);
         }
     }
 
