@@ -2,14 +2,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 function MovieCard(data) {
 
   return (
     <Card style={{ width: '18rem' }}>
-        <a href="/movie">
+        <Link to={`/movie/${data.movie.id}`}>
             <Card.Img variant="top" src={data.movie.imgsrc ? data.movie.imgsrc : '/placeholder.jpg'} />
-        </a>
+        </Link>
         <Card.Body>
             <Card.Title>{data.movie.title}</Card.Title>
             <Card.Text>

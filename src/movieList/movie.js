@@ -1,63 +1,63 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faStar} from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useState } from "react";
+import { API } from "aws-amplify";
+import { useParams } from 'react-router-dom';
 
 import Media from 'react-bootstrap/Media';
 import FormControl from 'react-bootstrap/FormControl';
+import { Col, Container, Row } from "react-bootstrap";
 
 function Movie() {
+
+    const [movie, setMovie]=useState({});
+
+    let { id } = useParams();
+
+    useEffect(async () => {
+        API.get('fourstar', `/movies/${id}`)
+        .then(response => {
+            console.log(`Response: ${JSON.stringify(response)}`);
+            setMovie(response[0]);
+            console.log(`Movie is now: ${JSON.stringify(movie)}`);
+        })
+        .catch(error => {
+            console.log(`error requesting from /movies/${id}; ${error}`);
+        });
+    }, [movie.id]);
+
   return (
     <div>
         <Media style={{backgroundColor: 'white'}}>
             <img
             className="align-self-start mr-3"
-            src="/marvel_the_avengers.jpeg"
+            src={movie.imgsrc ? movie.imgsrc : '/placeholder.jpg'}
             alt="Generic placeholder"
             />
             <Media.Body>
-            <h5>Media Heading</h5>
-            <p>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
-                tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                fringilla. Donec lacinia congue felis in faucibus.
-            </p>
-
-            <p>
-                Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu
-                leo. Cum sociis natoque penatibus et magnis dis parturient montes,
-                nascetur ridiculus mus.
-            </p>
-            <p>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
-                tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                fringilla. Donec lacinia congue felis in faucibus.
-            </p>
+            <h5>{movie.title}</h5>
+                <Container className="movieTextLabelContainer">
+                    <Row>
+                        <Col xs={2} className="movieTextLabel">Genre</Col>
+                        <Col xs={10} className="movieText">This is some really long text and stuff I suppose</Col>
+                    </Row>
+                    <Row>
+                        <Col xs={2} className="movieTextLabel">Language</Col>
+                        <Col xs={10} className="movieText">This is some really long text and stuff I suppose</Col>
+                    </Row>
+                    <Row>
+                        <Col xs={2} className="movieTextLabel">Release Date</Col>
+                        <Col xs={10} className="movieText">This is some really long text and stuff I supposeThis is some really long text and stuff I suppose</Col>
+                    </Row>
+                    <Row>
+                        <Col xs={2} className="movieTextLabel">Cast</Col>
+                        <Col xs={10} className="movieText">This is some really long text and stuff I suppose</Col>
+                    </Row>
+                </Container>
             </Media.Body>
         </Media>
         <div style={{backgroundColor: 'white'}}>
-                <p>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                    ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
-                    tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                    fringilla. Donec lacinia congue felis in faucibus.
-                </p>
+            <p>{movie.description}</p>
 
-                <p>
-                    Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu
-                    leo. Cum sociis natoque penatibus et magnis dis parturient montes,
-                    nascetur ridiculus mus.
-                </p>
-                <p>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                    ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
-                    tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                    fringilla. Donec lacinia congue felis in faucibus.
-                </p>
-
-                <FormControl as='textArea' style={{paddingLeft: '2px', paddingRight: '2rem'}}>
-                    Type a comment here
-                </FormControl>
+                <FormControl as='textarea' value='Type a comment here' style={{paddingLeft: '2px', paddingRight: '2rem'}}></FormControl>
         </div>
     </div>
   );

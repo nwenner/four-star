@@ -30,9 +30,8 @@ function App() {
             <Route path='/main'>
               <MovieList></MovieList>
             </Route>
-            <Route path='/movie'>
-              <Movie></Movie>
-            </Route>
+            <Route path='/movie/:id'
+                   children={<Movie></Movie>}></Route>
           </Switch>
         </Router>
       </Container>

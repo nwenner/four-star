@@ -21,7 +21,6 @@ function MovieList() {
     return (
         <CardColumns className="Movie-container">
             {movies.map((data,id)=> {
-                console.log(`data: ${JSON.stringify(data)}`)
                 return <MovieCard key={id} movie={data}></MovieCard>
             })}
             
