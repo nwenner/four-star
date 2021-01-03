@@ -18,9 +18,9 @@ function App() {
   return (
     <div className="App">
       <ProvideAuth>
-        <NavigationBar></NavigationBar>
-        <Container>
-          <Router>
+        <Router>
+          <NavigationBar></NavigationBar>
+          <Container>
             <Switch>
               <Route exact path="/">
                 <Redirect to="/main" />
@@ -43,8 +43,8 @@ function App() {
                 <AdminMovieList></AdminMovieList>
               </PrivateRoute>
             </Switch>
-          </Router>
-        </Container>
+          </Container>
+        </Router>
       </ProvideAuth>
     </div>
   );
