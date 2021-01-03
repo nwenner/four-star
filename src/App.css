@@ -24,11 +24,19 @@
 }
 
 .Movie-container {
-  padding-top: 2rem;
+  padding-top: 1rem;
 }
 
 .Nav-form {
   color: white;
+}
+
+.Movie-list-filter-group {
+  padding-top: 1rem;
+}
+
+.Movie-list-filter-input {
+  width: 50%;
 }
 
 .Movie-text-label-container {

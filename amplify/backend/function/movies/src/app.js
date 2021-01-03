@@ -69,6 +69,7 @@ app.get(path, function (req, res) {
         return {
           id: item.id,
           title: item.title,
+          genre: item.genre,
           description: item.description,
           rating: item.rating,
           imgsrc: item.imgsrc
