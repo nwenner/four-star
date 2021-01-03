@@ -20,12 +20,23 @@ function useProvideAuth() {
     const [user, setUser] = useState(null);
     const [userGroups, setUserGroups] = useState(null);
     
-    const signin = async (email, password) => {
-        return Auth.signIn(email, password);
+    const signin = (email, password) => {
+        return Auth
+            .signIn(email, password)
+            .then((userData) => {
+                setUser(userData);
+                setUserGroups(userData.signInUserSession.accessToken.payload["cognito:groups"]);
+                return userData;
+            });
     };
   
     const signout = () => {
-        Auth.signOut();
+        Auth
+            .signOut()
+            .then(() => {
+                setUser(null);
+                setUserGroups(null);
+            });
     };
    
     useEffect(() => {
@@ -39,7 +50,6 @@ function useProvideAuth() {
                     setUserGroups(null);
                     break;
                 case "signIn_failure":
-                    console.log("Sign in failure", data);
                     break;
                 default:
                     break;
