@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import CardColumns from 'react-bootstrap/CardColumns';
 import MovieCard from './movieCard';
 

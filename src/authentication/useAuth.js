@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
-import { Hub, Auth } from "aws-amplify";
+import { Auth } from "aws-amplify";
 
 const authContext = createContext();
 

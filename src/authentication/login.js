@@ -13,15 +13,12 @@ function Login() {
     const [pass, setPass] = useState();
     const [errorMessage, setErrorMessage] = useState();
 
-
     async function login(event) {
         event.preventDefault();
         try {
-            console.log('attempting to sign in');
             let result = await auth.signin(email, pass);
             if (result) {
                 let { from } = location.state || { from: { pathname: "/" } };
-                console.log(`from was: ${JSON.stringify(from)}`);
                 history.replace(from);
             }
         } catch (error) {
