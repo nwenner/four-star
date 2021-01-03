@@ -42,15 +42,30 @@ function useProvideAuth() {
     };
    
     useEffect(() => {
-        Auth.currentAuthenticatedUser()
-            .then((user) => {
-                setUser(user);
-                if (user) {
-                    setUserGroups(user.signInUserSession.accessToken.payload["cognito:groups"]);
+
+        let active = true
+
+        const check = async () => {
+            try {
+                const user = await Auth.currentAuthenticatedUser()
+                if (active) {
+                    setUser(user);
+                    if (user) {
+                        setUserGroups(user.signInUserSession.accessToken.payload["cognito:groups"]);
+                    }
                 }
-            })
-            .catch(() => setUser(null));
-    }, []);
+            } catch (error) {
+                if (active) {
+                    setUser(null);
+                    setUserGroups(null);
+                };
+            }
+        }
+
+        check()
+
+        return () => { active = false }
+    }, [setUser]);
 
     return {
       user,

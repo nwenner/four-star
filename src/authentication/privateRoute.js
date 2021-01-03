@@ -1,28 +1,21 @@
-import { Redirect, Route } from "react-router-dom";
-import { useAuth } from "./useAuth";
-
-export const ROLE_ADMIN = 'admin';
+import { Route } from 'react-router-dom';
+import NotPermitted from './notPermitted';
+import { useAuth } from './useAuth';
 
 function PrivateRoute({ children, ...rest }) {
-    let auth = useAuth();
-
-    return (
-      <Route
-        {...rest}
-        render={({ location }) =>
-          auth.userGroups ? (
-            children
-          ) : (
-            <Redirect
-              to={{
-                pathname: "/login",
-                state: { from: location }
-              }}
-            />
-          )
-        }
-      />
-    );
-  }
+  let auth = useAuth();
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        auth.userGroups ? (
+          children
+        ) : (
+          <NotPermitted></NotPermitted>
+        )
+      }
+    />
+  );
+}
 
 export default PrivateRoute;
