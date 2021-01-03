@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { useAuth } from "../authentication/useAuth"
 
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,7 +7,6 @@ import FormControl from 'react-bootstrap/FormControl';
 
 function NavigationBar() {
     const auth = useAuth();
-
     return (
         <Navbar fixed="top" sticky="top" bg="dark" variant="dark">
             <Navbar.Brand href="/main">
@@ -17,11 +15,13 @@ function NavigationBar() {
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
                 <Nav.Link href="/main">Home</Nav.Link>
+                {auth.userGroups && 
+                    <Nav.Link href="/admin">Admin</Nav.Link>
+                }
             </Nav>
             <Form inline className="Nav-form">
                 {auth.user && 
                     <div>
-                        <span style={{color: 'red', marginRight: "5px"}}><b>{auth.userGroups ? 'Admin' : null}</b></span>
                         <span style={{marginRight: "5px"}}>Welcome <b>{auth.user ? auth.user.attributes.email : null}</b></span>
                         <a href="/main" className="Sign-out" onClick={() => auth.signout()}>Sign Out</a>
                     </div>

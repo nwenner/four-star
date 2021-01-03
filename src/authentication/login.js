@@ -21,6 +21,7 @@ function Login() {
             let result = await auth.signin(email, pass);
             if (result) {
                 let { from } = location.state || { from: { pathname: "/" } };
+                console.log(`from was: ${JSON.stringify(from)}`);
                 history.replace(from);
             }
         } catch (error) {
