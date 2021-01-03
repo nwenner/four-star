@@ -6,6 +6,8 @@ import Media from 'react-bootstrap/Media';
 import FormControl from 'react-bootstrap/FormControl';
 import { Col, Container, Row } from "react-bootstrap";
 
+import MovieRating from './movieRating';
+
 function Movie() {
 
     const [movie, setMovie]=useState({});
@@ -33,8 +35,13 @@ function Movie() {
             alt="Generic placeholder"
             />
             <Media.Body>
-            <h5>{movie.title}</h5>
+                <h5>{movie.title}</h5>
                 <Container className="Movie-text-label-container">
+                    <Row>
+                        <Col xs={12} className="Movie-text-label">
+                            <MovieRating rating={movie.rating}></MovieRating>
+                        </Col>
+                    </Row>
                     <Row>
                         <Col xs={2} className="Movie-text-label">Genre</Col>
                         <Col xs={10} className="Movie-text">{movie.genre ? movie.genre : 'N/A'}</Col>

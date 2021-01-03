@@ -1,8 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faStar} from '@fortawesome/free-solid-svg-icons';
-
-import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
+import MovieRating from './movieRating';
 
 function MovieCard(data) {
 
@@ -18,12 +16,7 @@ function MovieCard(data) {
             </Card.Text>
         </Card.Body>
         <Card.Footer>
-            <FontAwesomeIcon icon={faStar} style={{color: "#FFCC00"}}></FontAwesomeIcon>
-            <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-            <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-            <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-            <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-            ({data.movie.rating} Average)
+            <MovieRating rating={data.movie.rating}></MovieRating>
         </Card.Footer>
     </Card>
   );
