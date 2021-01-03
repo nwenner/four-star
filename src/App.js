@@ -10,31 +10,34 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
+import { ProvideAuth } from './authentication/useAuth';
 
 function App() {
   return (
     <div className="App">
-      <NavigationBar></NavigationBar>
-      <Container>
-        <Router>
-          <Switch>
-            <Route exact path="/">
-              <Redirect to="/main" />
-            </Route>
-            <Route path='/login'>
-              <Login></Login>
-            </Route>
-            <Route path='/logout'>
-              <Login></Login>
-            </Route>
-            <Route path='/main'>
-              <MovieList></MovieList>
-            </Route>
-            <Route path='/movie/:id'
-                   children={<Movie></Movie>}></Route>
-          </Switch>
-        </Router>
-      </Container>
+      <ProvideAuth className="App">
+        <NavigationBar></NavigationBar>
+        <Container>
+          <Router>
+            <Switch>
+              <Route exact path="/">
+                <Redirect to="/main" />
+              </Route>
+              <Route path='/login'>
+                <Login></Login>
+              </Route>
+              <Route path='/logout'>
+                <Login></Login>
+              </Route>
+              <Route path='/main'>
+                <MovieList></MovieList>
+              </Route>
+              <Route path='/movie/:id'
+                    children={<Movie></Movie>}></Route>
+            </Switch>
+          </Router>
+        </Container>
+      </ProvideAuth>
     </div>
   );
 }
