@@ -17,14 +17,12 @@ function Movie() {
     useEffect(async () => {
         API.get('fourstar', `/movies/${id}`)
         .then(response => {
-            console.log(`Response: ${JSON.stringify(response)}`);
             setMovie(response[0]);
-            console.log(`Movie is now: ${JSON.stringify(movie)}`);
         })
         .catch(error => {
             console.log(`error requesting from /movies/${id}; ${error}`);
         });
-    }, [movie.id]);
+    }, []);
 
   return (
     <div>
