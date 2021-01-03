@@ -37,19 +37,19 @@ function Movie() {
                 <Container className="movieTextLabelContainer">
                     <Row>
                         <Col xs={2} className="movieTextLabel">Genre</Col>
-                        <Col xs={10} className="movieText">This is some really long text and stuff I suppose</Col>
+                        <Col xs={10} className="movieText">{movie.genre ? movie.genre : 'N/A'}</Col>
                     </Row>
                     <Row>
                         <Col xs={2} className="movieTextLabel">Language</Col>
-                        <Col xs={10} className="movieText">This is some really long text and stuff I suppose</Col>
+                        <Col xs={10} className="movieText">{movie.language ? movie.language : 'N/A'}</Col>
                     </Row>
                     <Row>
                         <Col xs={2} className="movieTextLabel">Release Date</Col>
-                        <Col xs={10} className="movieText">This is some really long text and stuff I supposeThis is some really long text and stuff I suppose</Col>
+                        <Col xs={10} className="movieText">{movie.releaseDate ? movie.releaseDate : 'N/A'}</Col>
                     </Row>
                     <Row>
                         <Col xs={2} className="movieTextLabel">Cast</Col>
-                        <Col xs={10} className="movieText">This is some really long text and stuff I suppose</Col>
+                        <Col xs={10} className="movieText">{movie.cast ? movie.cast : 'N/A'}</Col>
                     </Row>
                 </Container>
             </Media.Body>
