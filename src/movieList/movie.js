@@ -14,15 +14,18 @@ function Movie() {
 
     let { id } = useParams();
 
-    useEffect(async () => {
-        API.get('fourstar', `/movies/${id}`)
-        .then(response => {
-            setMovie(response[0]);
-        })
-        .catch(error => {
-            console.log(`error requesting from /movies/${id}; ${error}`);
-        });
-    }, []);
+    useEffect(() => {
+        async function fetchData() {
+            await API.get('fourstar', `/movies/${id}`)
+                .then(response => {
+                    setMovie(response[0]);
+                })
+                .catch(error => {
+                    console.log(`error requesting from /movies/${id}; ${error}`);
+                });
+        }
+        fetchData();
+    }, [id]);
 
   return (
     <div>
@@ -61,7 +64,7 @@ function Movie() {
         </Media>
         <div style={{backgroundColor: 'white'}}>
             <div className="Movie-plot">{movie.plot}</div>
-            <CommentSection></CommentSection>
+            <CommentSection movieId={id}></CommentSection>
         </div>
     </div>
   );
