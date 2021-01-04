@@ -6,7 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function CommentRating(data) {
 
     function onClickRating(rating) {
-        data.onCommentRatingClick(rating);
+        if (data.rating === 1 && rating === 1) {
+            data.onCommentRatingClick(0);
+        } else {
+            data.onCommentRatingClick(rating);
+        }
     }
 
     return (

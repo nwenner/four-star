@@ -19,8 +19,18 @@ function CommentSection(data) {
     const auth = useAuth();
     const [movieReview, setMovieReview]=useState({
         comment: 'this is a comment',
-        rating: 3
+        rating: 0
     });
+
+    function fetchData() {
+        API.get('fourstar', `/comments/${data.movieId}`)
+            .then(response => {
+                setComments(response);
+            })
+            .catch(error => {
+                console.log(`error requesting from /comments/1; ${error}`);
+            });
+    }
 
     useEffect(() => {
         async function fetchData() {
@@ -40,7 +50,6 @@ function CommentSection(data) {
             ...movieReview,
             rating: clickedRating
         });
-        console.log(`MovieReview State: ${JSON.stringify(movieReview)}`);
     }
 
     function onCommentUpdated(e) {
@@ -56,6 +65,7 @@ function CommentSection(data) {
         const commentToSend = {
             movieid: data.movieId,
             commentid: uuidv4(),
+            username: auth.user.attributes.email,
             comment: movieReview.comment,
             rating: movieReview.rating,
             date: datePosted
@@ -63,13 +73,7 @@ function CommentSection(data) {
         API.put('fourstar', `/comments`, {
             body: commentToSend
         }).then(response => {
-            API.get('fourstar', `/comments/${data.movieId}`)
-                .then(response => {
-                    setComments(response);
-                })
-                .catch(error => {
-                    console.log(`error requesting from /comments/1; ${error}`);
-                });
+            fetchData();
         });
     }
 
