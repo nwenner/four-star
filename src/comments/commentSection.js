@@ -2,19 +2,25 @@ import { useEffect, useState } from 'react';
 import { API } from 'aws-amplify';
 
 import {useAuth} from '../authentication/useAuth';
+import { v4 as uuidv4 } from 'uuid';
 
 import { ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 import FormControl from 'react-bootstrap/FormControl';
 import Alert from 'react-bootstrap/Alert';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 import Comment from './comment';
+import CommentRating from './commentRating';
 
 function CommentSection(data) {
     const [comments, setComments]=useState([]);
     const auth = useAuth();
+    const [movieReview, setMovieReview]=useState({
+        comment: 'this is a comment',
+        rating: 3
+    });
 
     useEffect(() => {
         async function fetchData() {
@@ -28,6 +34,44 @@ function CommentSection(data) {
         }
         fetchData();
     }, [data.movieId]);
+
+    function onCommentRatingClick(clickedRating) {
+        setMovieReview({
+            ...movieReview,
+            rating: clickedRating
+        });
+        console.log(`MovieReview State: ${JSON.stringify(movieReview)}`);
+    }
+
+    function onCommentUpdated(e) {
+        setMovieReview({
+            ...movieReview,
+            comment: e.currentTarget.value
+        });
+    }
+
+    function onSubmitComment() {
+        console.log(`Clicked submit comment, here are the details:`);
+        var datePosted = Date.now();
+        const commentToSend = {
+            movieid: data.movieId,
+            commentid: uuidv4(),
+            comment: movieReview.comment,
+            rating: movieReview.rating,
+            date: datePosted
+        };
+        API.put('fourstar', `/comments`, {
+            body: commentToSend
+        }).then(response => {
+            API.get('fourstar', `/comments/${data.movieId}`)
+                .then(response => {
+                    setComments(response);
+                })
+                .catch(error => {
+                    console.log(`error requesting from /comments/1; ${error}`);
+                });
+        });
+    }
 
     return (
         <div>
@@ -55,20 +99,11 @@ function CommentSection(data) {
                 {auth.user && 
                     <>
                         <div className="Comment-submission-container">
-                            <FormControl as='textarea' placeholder='Type a comment here' style={{paddingLeft: '2px', paddingRight: '2rem'}}></FormControl>
+                            <FormControl as='textarea' placeholder='Type a comment here' style={{paddingLeft: '2px', paddingRight: '2rem'}} onChange={(e)=>onCommentUpdated(e)}></FormControl>
                         </div>
-                        <div className="Comment-submission-container">
-                            <span>Rating:</span>
-                            <div className="Comment-submission-rating">
-                                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-                                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-                                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-                                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-                                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
-                            </div>
-                        </div>
+                        <CommentRating rating={movieReview.rating} onCommentRatingClick={onCommentRatingClick}></CommentRating>
                         <div>
-                            <Button variant="warning">Submit</Button>
+                            <Button variant="warning" onClick={onSubmitComment}>Submit</Button>
                         </div>
                     </>
                 }
