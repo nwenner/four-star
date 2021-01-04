@@ -93,7 +93,7 @@ app.get('/comments/movieid/:id', function(req, res) {
       res.json({error: 'Could not load items: ' + err});
     } else {
       console.log(`Items: ${data.Items}`);
-      res.json(data.Items);
+      res.json(data.Items.sort((a, b) => a.date - b.date));
     }
   });
 });
