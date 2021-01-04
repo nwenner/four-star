@@ -66,9 +66,25 @@
   padding: 2rem;
 }
 
+.Comment-component-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: stretch;
+}
+
 .Comment-container {
   display: inline;
   margin-left: 1rem;
+}
+
+.Comment-delete-container {
+  order: 0;
+  flex: 1 1 auto;
+  align-self: flex-end;
+  text-align: right;
 }
 
 .Comment-upvote-container {
