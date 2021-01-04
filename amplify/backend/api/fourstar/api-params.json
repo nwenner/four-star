@@ -7,6 +7,31 @@
                 "open": true
             },
             "policyResourceName": "/movies"
+        },
+        {
+            "name": "/comments",
+            "lambdaFunction": "comments",
+            "privacy": {
+                "protected": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH"
+                ],
+                "unauth": [
+                    "/GET"
+                ],
+                "userPoolGroups": {
+                    "admin": [
+                        "/POST",
+                        "/GET",
+                        "/PUT",
+                        "/PATCH",
+                        "/DELETE"
+                    ]
+                }
+            }
         }
     ],
     "resourceName": "fourstar",
@@ -14,11 +39,14 @@
     "functionArns": [
         {
             "lambdaFunction": "movies"
+        },
+        {
+            "lambdaFunction": "comments"
         }
     ],
     "privacy": {
-        "auth": 0,
-        "unauth": 0,
+        "auth": 1,
+        "unauth": 1,
         "authRoleName": "amplify-fourstar-dev-112717-authRole",
         "unAuthRoleName": "amplify-fourstar-dev-112717-unauthRole"
     },
@@ -30,6 +58,30 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "comments",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "fourstara06b407d",
+            "attributes": [
+                "UserPoolId"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "userPoolGroups",
+            "attributes": [
+                "adminGroupRole"
+            ]
         }
-    ]
+    ],
+    "uuid": "5d7a02f1",
+    "authResourceName": "fourstara06b407d"
 }
