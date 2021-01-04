@@ -103,6 +103,19 @@
   text-align: center;
 }
 
+.Card-body {
+  padding-top: 0rem;
+}
+
+.Card-badge-container {
+  text-align: right;
+  padding-top: 0px;
+}
+
+.Card-badge {
+  margin-right: 0.25rem;
+}
+
 /* Site Wide Components */
 
 @media (prefers-reduced-motion: no-preference) {
