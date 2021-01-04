@@ -34,9 +34,6 @@ function App() {
               <Route path='/main'>
                 <MovieList></MovieList>
               </Route>
-              <Route path='/whyjustwhy'>
-                <span style={{color: 'white'}}>Sigh</span>
-              </Route>
               <Route path='/movie/:id'
                     children={<Movie></Movie>}></Route>
               <PrivateRoute path='/admin'>
