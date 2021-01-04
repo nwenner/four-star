@@ -5,9 +5,10 @@ import {useAuth} from '../authentication/useAuth';
 
 import { ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 import FormControl from 'react-bootstrap/FormControl';
+import Alert from 'react-bootstrap/Alert';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 import Comment from './comment';
 
@@ -36,6 +37,14 @@ function CommentSection(data) {
                         return <Comment key={id} comment={data}></Comment>
                     })
                 }
+                {!comments.length &&
+                    <Alert variant="secondary" className="Empty-comment-alert">
+                        <div className="Div-center">
+                            <FontAwesomeIcon icon={faEdit} color="#CCC" size="lg"></FontAwesomeIcon>
+                            <span className="Margin-left--">No comments yet, be the first!</span>
+                        </div>
+                    </Alert>
+                }
             </ListGroupItem>
             <ListGroup.Item>
                 {!auth.user && 
@@ -51,11 +60,11 @@ function CommentSection(data) {
                         <div className="Comment-submission-container">
                             <span>Rating:</span>
                             <div className="Comment-submission-rating">
-                                <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
-                                <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
-                                <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
-                                <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
-                                <FontAwesomeIcon icon={faStar} ></FontAwesomeIcon>
+                                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
+                                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
+                                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
+                                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
+                                <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
                             </div>
                         </div>
                         <div>

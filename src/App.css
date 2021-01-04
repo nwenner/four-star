@@ -82,9 +82,25 @@
   cursor: pointer;
 }
 
+.Empty-comment-alert {
+  margin-bottom: 0rem;
+}
+
 .Yellow-star > path {
   color: "#FFCC00"
 }
+
+/* Utility Classes */
+
+.Margin-left-- {
+  margin-left: 0.5rem;
+}
+
+.Div-center {
+  text-align: center;
+}
+
+/* Site Wide Components */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
