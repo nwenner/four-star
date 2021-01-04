@@ -4,20 +4,9 @@
             "name": "/movies",
             "lambdaFunction": "movies",
             "privacy": {
-                "open": true
-            },
-            "policyResourceName": "/movies"
-        },
-        {
-            "name": "/comments",
-            "lambdaFunction": "comments",
-            "privacy": {
                 "protected": true,
                 "auth": [
-                    "/POST",
-                    "/GET",
-                    "/PUT",
-                    "/PATCH"
+                    "/GET"
                 ],
                 "unauth": [
                     "/GET"
@@ -31,17 +20,16 @@
                         "/DELETE"
                     ]
                 }
-            }
+            },
+            "policyResourceName": "/movies"
         }
     ],
     "resourceName": "fourstar",
     "apiName": "fourstar",
+    "authResourceName": "fourstara06b407d",
     "functionArns": [
         {
             "lambdaFunction": "movies"
-        },
-        {
-            "lambdaFunction": "comments"
         }
     ],
     "privacy": {
@@ -54,14 +42,6 @@
         {
             "category": "function",
             "resourceName": "movies",
-            "attributes": [
-                "Name",
-                "Arn"
-            ]
-        },
-        {
-            "category": "function",
-            "resourceName": "comments",
             "attributes": [
                 "Name",
                 "Arn"
@@ -81,7 +61,5 @@
                 "adminGroupRole"
             ]
         }
-    ],
-    "uuid": "5d7a02f1",
-    "authResourceName": "fourstara06b407d"
+    ]
 }
