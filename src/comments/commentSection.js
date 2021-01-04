@@ -77,12 +77,20 @@ function CommentSection(data) {
         });
     }
 
+    function onDeleteComment(comment) {
+        API.del('fourstar', `/comments/object/${comment.movieid}/${comment.commentid}`, {
+            body: comment
+        }).then(response => {
+            fetchData();
+        });
+    }
+
     return (
         <div>
             <ListGroupItem variant="flush">
                 {
                     comments.map((data,id)=> {
-                        return <Comment key={id} comment={data}></Comment>
+                        return <Comment key={id} comment={data} onDeleteComment={onDeleteComment}></Comment>
                     })
                 }
                 {!comments.length &&

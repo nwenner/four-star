@@ -10,6 +10,10 @@ function Comment(data) {
 
     const auth = useAuth();
 
+    function onClickDelete() {
+        data.onDeleteComment(data.comment);
+    }
+
     return (
         <ListGroup.Item>
             <div className="Comment-component-container">
@@ -31,7 +35,7 @@ function Comment(data) {
                 </div>
                 {auth.userGroups && 
                     <div className="Comment-delete-container">
-                        <Button variant="warning" size="sm">Delete</Button>
+                        <Button variant="warning" size="sm" onClick={onClickDelete}>Delete</Button>
                     </div>
                 }
             </div>
