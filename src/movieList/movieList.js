@@ -31,7 +31,7 @@ function MovieList() {
                 <Form.Control 
                     className="Movie-list-filter-input"
                     type="searchInput" 
-                    placeholder="search/filter" 
+                    placeholder="Filter by Title/Genre" 
                     onChange={(e)=>searchMovieList(e)}/>
             </Form.Group>
             <FilterableMovies movies={movies} searchTerm={searchTerm}></FilterableMovies>
