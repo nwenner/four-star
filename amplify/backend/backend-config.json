@@ -33,10 +33,6 @@
     "movies": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
-    },
-    "comments": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
     }
   },
   "function": {
@@ -56,22 +52,6 @@
             "Name": "TABLE_NAME",
             "Arn": "TABLE_ARN"
           }
-        }
-      ]
-    },
-    "commentsTrigger55f1539c": {
-      "service": "Lambda",
-      "providerPlugin": "awscloudformation",
-      "build": true,
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "comments",
-          "attributes": [
-            "Name",
-            "Arn",
-            "StreamArn"
-          ]
         }
       ]
     }
