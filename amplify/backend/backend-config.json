@@ -33,6 +33,10 @@
     "movies": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "comments": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   },
   "function": {
@@ -44,6 +48,41 @@
         {
           "category": "storage",
           "resourceName": "movies",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
+    },
+    "commentsTrigger018c171b": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true,
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "comments",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        }
+      ]
+    },
+    "comments": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "comments",
           "attributes": [
             "Name",
             "Arn"
@@ -81,6 +120,14 @@
           "resourceName": "userPoolGroups",
           "attributes": [
             "adminGroupRole"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "comments",
+          "attributes": [
+            "Name",
+            "Arn"
           ]
         }
       ]
