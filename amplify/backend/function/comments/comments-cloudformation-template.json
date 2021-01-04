@@ -77,7 +77,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-fourstar-dev-112717-deployment",
-          "S3Key": "amplify-builds/comments-53364373514c6747554f-build.zip"
+          "S3Key": "amplify-builds/comments-372f5a4c39686f6f3369-build.zip"
         }
       }
     },
