@@ -1,4 +1,4 @@
-import { Button, ListGroup } from "react-bootstrap";
+import { Badge, Button, ListGroup } from "react-bootstrap";
 
 import { faStar, faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -39,10 +39,12 @@ function Comment(data) {
                     </div>
                 }
             </div>
-            <div>
-                <span><b>User: </b></span><span>{data.comment.username}</span>
+            <div className="Comment-user-info">
+                <span className="Movie-text-label">User:</span>
+                <span className="Margin-left--">{data.comment.username}</span> 
+                <Badge variant="warning" className={`Card-badge Margin-left--`}>Admin</Badge>
             </div>
-            <div>{data.comment.comment}</div>
+            <div className="Margin-top--">{data.comment.comment}</div>
         </ListGroup.Item>
     );
 }

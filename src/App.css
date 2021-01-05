@@ -101,6 +101,15 @@
   cursor: pointer;
 }
 
+.Comment-user-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
+}
+
 .Empty-comment-alert {
   margin-bottom: 0rem;
 }
@@ -113,6 +122,10 @@
 
 .Margin-left-- {
   margin-left: 0.5rem;
+}
+
+.Margin-top-- {
+  margin-top: 0.5rem;
 }
 
 .Div-center {
