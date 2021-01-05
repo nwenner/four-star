@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-import MovieRating from './movieRating';
+import MovieRating from '../rating/movieRating';
 import { Badge } from 'react-bootstrap';
 
 function MovieCard(data) {
@@ -20,7 +20,7 @@ function MovieCard(data) {
             </Card.Text>
         </Card.Body>
         <Card.Footer>
-            <MovieRating rating={data.movie.rating}></MovieRating>
+            <MovieRating rating={data.movie.rating} shouldShowRating="true"></MovieRating>
         </Card.Footer>
     </Card>
   );

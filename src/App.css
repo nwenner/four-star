@@ -109,6 +109,11 @@
   align-content: stretch;
 }
 
+.Comment-rating-container {
+  display: flex;
+  justify-content: left;
+}
+
 .Empty-comment-alert {
   margin-bottom: 0rem;
 }

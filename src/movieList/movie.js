@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import Media from 'react-bootstrap/Media';
 import { Col, Container, Row } from "react-bootstrap";
 
-import MovieRating from './movieRating';
+import MovieRating from '../rating/movieRating';
 import CommentSection from "../comments/commentSection";
 
 function Movie() {
@@ -43,7 +43,7 @@ function Movie() {
                 <Container className="Movie-text-label-container">
                     <Row>
                         <Col xs={12} className="Movie-text-label">
-                            <MovieRating rating={movie.rating}></MovieRating>
+                            <MovieRating rating={movie.rating} shouldShowRating="true"></MovieRating>
                         </Col>
                     </Row>
                     <Row>

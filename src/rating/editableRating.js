@@ -1,9 +1,7 @@
-
-
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function CommentRating(data) {
+function EditableRating(data) {
 
     function onClickRating(rating) {
         if (data.rating === 1 && rating === 1) {
@@ -15,7 +13,6 @@ function CommentRating(data) {
 
     return (
         <div className="Comment-submission-container">
-            <span>Rating:</span>
             <div className="Comment-submission-rating">
                 <FontAwesomeIcon icon={faStar} color={data.rating >= 1 ? '#FFCC00' : ''} onClick={() => onClickRating(1)}></FontAwesomeIcon>
                 <FontAwesomeIcon icon={faStar} color={data.rating >= 2 ? '#FFCC00' : ''} onClick={() => onClickRating(2)}></FontAwesomeIcon>
@@ -27,5 +24,5 @@ function CommentRating(data) {
     );
 }
 
-export default CommentRating;
+export default EditableRating;
 

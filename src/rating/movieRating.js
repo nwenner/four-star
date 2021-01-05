@@ -9,7 +9,9 @@ function MovieRating(data) {
             <FontAwesomeIcon icon={faStar} color={data.rating >= 2.75 ? '#FFCC00' : ''}></FontAwesomeIcon>
             <FontAwesomeIcon icon={faStar} color={data.rating >= 3.75 ? '#FFCC00' : ''}></FontAwesomeIcon>
             <FontAwesomeIcon icon={faStar} color={data.rating >= 4.75 ? '#FFCC00' : ''}></FontAwesomeIcon>
-            ({data.rating} Average)
+            {
+                data.shouldShowRating && <span>({data.rating} Average)</span>
+            }
         </div>
     );
 }

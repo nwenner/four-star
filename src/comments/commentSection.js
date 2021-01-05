@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 import Comment from './comment';
-import CommentRating from './commentRating';
+import CommentRating from '../rating/editableRating';
 
 function CommentSection(data) {
     const [comments, setComments]=useState([]);
@@ -113,7 +113,10 @@ function CommentSection(data) {
                         <div className="Comment-submission-container">
                             <FormControl as='textarea' placeholder='Type a comment here' style={{paddingLeft: '2px', paddingRight: '2rem'}} onChange={(e)=>onCommentUpdated(e)}></FormControl>
                         </div>
-                        <CommentRating rating={movieReview.rating} onCommentRatingClick={onCommentRatingClick}></CommentRating>
+                        <div className="Comment-rating-container">
+                            <span>Rating: </span>
+                            <CommentRating rating={movieReview.rating} onCommentRatingClick={onCommentRatingClick}></CommentRating>
+                        </div>
                         <div>
                             <Button variant="warning" onClick={onSubmitComment}>Submit</Button>
                         </div>
