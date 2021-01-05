@@ -12,6 +12,7 @@ function Comment(data) {
     const dateValue = new Date(data.comment.date).toLocaleString();
     const [editableComment, setEditableComment] = useState(data.comment);
     const [editMode, setEditMode] = useState(false);
+
     const isUpvoteEnabled = false;
 
     const auth = useAuth();
@@ -68,7 +69,9 @@ function Comment(data) {
                     </div>
                 }
                 { editMode &&
-                    <EditableRating rating={editableComment.rating} onCommentRatingClick={onCommentRatingClick}></EditableRating>
+                    <EditableRating 
+                        rating={editableComment.rating} 
+                        onCommentRatingClick={onCommentRatingClick}></EditableRating>
                 }
                 { !editMode &&
                     <MovieRating rating={data.comment.rating}></MovieRating>
@@ -76,10 +79,18 @@ function Comment(data) {
                 
                 <div className="Comment-delete-container">
                     { canEnterEditMode() && !editMode &&
-                        <Button variant="warning" size="sm" onClick={startEditMode}>Edit</Button>
+                        <Button 
+                            variant="warning" 
+                            size="sm" 
+                            onClick={startEditMode}>Edit</Button>
                     }
                     {auth.userGroups && 
-                        <Button variant="danger" size="sm" onClick={onClickDelete} className="Margin-left">Delete</Button>
+                        <Button 
+                            variant="danger" 
+                            size="sm" 
+                            className="Margin-left"
+                            disabled={data.loading}
+                            onClick={onClickDelete}>Delete</Button>
                     }
                 </div>
             </div>
@@ -92,10 +103,22 @@ function Comment(data) {
             </div>
             { editMode && 
                 <div>
-                    <FormControl as='textarea' value={editableComment.comment} className="Margin-top--" onChange={(e)=>onCommentUpdated(e)}></FormControl>
+                    <FormControl 
+                        as='textarea' 
+                        value={editableComment.comment} 
+                        className="Margin-top--" 
+                        onChange={(e)=>onCommentUpdated(e)}></FormControl>
                     <div className="Margin-top--">
-                        <Button variant="warning" size="sm" onClick={onClickEdit}>Submit</Button>
-                        <Button variant="danger" size="sm" className="Margin-left--" onClick={cancelEditMode}>Cancel</Button>
+                        <Button 
+                            variant="warning" 
+                            size="sm" 
+                            disabled={data.loading}
+                            onClick={onClickEdit}>Submit</Button>
+                        <Button 
+                            variant="danger" 
+                            size="sm" 
+                            className="Margin-left--" 
+                            onClick={cancelEditMode}>Cancel</Button>
                     </div>
                 </div>
             }

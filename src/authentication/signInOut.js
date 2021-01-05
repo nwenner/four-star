@@ -6,18 +6,30 @@ function SignInOut() {
     const auth = useAuth();
     const history = useHistory();
     
-    const handleOnClick = () => history.push('/login');
+    function handleOnClick() {
+        history.push('/login');
+    }
+
+    function onSignOut() {
+        auth.signout();
+    }
 
     return (
         <Form inline className="Nav-form">
             {auth.user && 
                 <div>
                     <span className="Welcome-user">Welcome {auth.user ? auth.user.attributes.email : null}</span>
-                    <Button variant="warning" size="sm" onClick={() => auth.signout()}>Sign Out</Button>
+                    <Button 
+                        variant="warning" 
+                        size="sm" 
+                        onClick={onSignOut}>Sign Out</Button>
                 </div>
             }
             {!auth.user &&
-                <Button variant="warning" size="sm" onClick={handleOnClick}>Sign In</Button>
+                <Button 
+                    variant="warning" 
+                    size="sm"
+                    onClick={handleOnClick}>Sign In</Button>
             }
         </Form>
     );

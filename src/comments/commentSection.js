@@ -15,12 +15,14 @@ import Comment from './comment';
 import CommentRating from '../rating/editableRating';
 
 function CommentSection(data) {
+    const blankReview = {
+        comment: '',
+        rating: 0
+    };
     const [comments, setComments]=useState([]);
     const auth = useAuth();
-    const [movieReview, setMovieReview]=useState({
-        comment: 'this is a comment',
-        rating: 0
-    });
+    const [movieReview, setMovieReview]=useState(blankReview);
+    const [loading, setLoading]=useState(false);
 
     function fetchData() {
         API.get('fourstar', `/comments/${data.movieId}`)
@@ -29,6 +31,10 @@ function CommentSection(data) {
             })
             .catch(error => {
                 console.log(`error requesting from /comments/1; ${error}`);
+            })
+            .finally(() => {
+                setLoading(false);
+                setMovieReview(blankReview);
             });
     }
 
@@ -66,7 +72,7 @@ function CommentSection(data) {
     }
 
     function onSubmitComment() {
-        console.log(`Clicked submit comment, here are the details:`);
+        setLoading(true);
         var datePosted = Date.now();
         const commentToSend = {
             movieid: data.movieId,
@@ -85,6 +91,7 @@ function CommentSection(data) {
     }
 
     function onDeleteComment(comment) {
+        setLoading(true);
         API.del('fourstar', `/comments/object/${comment.movieid}/${comment.commentid}`, {
             body: comment
         }).then(response => {
@@ -93,6 +100,7 @@ function CommentSection(data) {
     }
 
     function onEditComment(comment) {
+        setLoading(true);
         API.put('fourstar', `/comments`, {
             body: comment
         }).then(response => {
@@ -105,7 +113,7 @@ function CommentSection(data) {
             <ListGroupItem variant="flush">
                 {
                     comments.map((data,id)=> {
-                        return <Comment key={id} comment={data} onDeleteComment={onDeleteComment} onEditComment={onEditComment}></Comment>
+                        return <Comment key={id} comment={data} onDeleteComment={onDeleteComment} onEditComment={onEditComment} loading={loading}></Comment>
                     })
                 }
                 {!comments.length &&
@@ -133,7 +141,10 @@ function CommentSection(data) {
                             <CommentRating rating={movieReview.rating} onCommentRatingClick={onCommentRatingClick}></CommentRating>
                         </div>
                         <div>
-                            <Button variant="warning" onClick={onSubmitComment}>Submit</Button>
+                            <Button 
+                                variant="warning" 
+                                disabled={loading}
+                                onClick={onSubmitComment}>Submit</Button>
                         </div>
                     </>
                 }

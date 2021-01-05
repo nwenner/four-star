@@ -114,6 +114,11 @@
   justify-content: left;
 }
 
+.Comment-text-area {
+  padding-left: 0.5rem;
+  padding-right: 2rem;
+}
+
 .Empty-comment-alert {
   margin-bottom: 0rem;
 }

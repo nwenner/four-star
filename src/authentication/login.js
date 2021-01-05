@@ -11,12 +11,15 @@ function Login() {
     const [email, setEmail] = useState();
     const [pass, setPass] = useState();
     const [errorMessage, setErrorMessage] = useState();
+    const [loading, setLoading] = useState(false);
 
     async function login(event) {
         event.preventDefault();
+        setLoading(true);
         try {
             let result = await auth.signin(email, pass);
             if (result) {
+                setLoading(false);
                 history.goBack();
             }
         } catch (error) {
@@ -47,7 +50,8 @@ function Login() {
                     </Form.Group>
 
                     <Button variant="primary" 
-                            type="submit" 
+                            type="submit"
+                            disabled={loading}
                             onClick={login}>
                     Log In
                     </Button>
