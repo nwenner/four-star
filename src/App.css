@@ -123,6 +123,19 @@
   margin-bottom: 0rem;
 }
 
+.Card-body {
+  padding-top: 0rem;
+}
+
+.Card-badge-container {
+  text-align: right;
+  padding-top: 0px;
+}
+
+.Card-badge {
+  margin-right: 0.25rem;
+}
+
 .Yellow-star > path {
   color: "#FFCC00"
 }
@@ -157,19 +170,6 @@
 
 .Div-center {
   text-align: center;
-}
-
-.Card-body {
-  padding-top: 0rem;
-}
-
-.Card-badge-container {
-  text-align: right;
-  padding-top: 0px;
-}
-
-.Card-badge {
-  margin-right: 0.25rem;
 }
 
 /* Site Wide Components */
