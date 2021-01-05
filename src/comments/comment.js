@@ -21,12 +21,18 @@ function Comment(data) {
         data.onDeleteComment(data.comment);
     }
 
+    function onClickEdit() {
+        setEditMode(false);
+        data.onEditComment(editableComment);
+    }
+
     function startEditMode() {
         setEditMode(true);
     }
 
     function cancelEditMode() {
         setEditMode(false);
+        setEditableComment(data.comment);
     }
 
     function canEnterEditMode() {
@@ -37,6 +43,13 @@ function Comment(data) {
         setEditableComment({
             ...editableComment,
             rating: clickedRating
+        });
+    }
+
+    function onCommentUpdated(e) {
+        setEditableComment({
+            ...editableComment,
+            comment: e.currentTarget.value
         });
     }
 
@@ -79,9 +92,9 @@ function Comment(data) {
             </div>
             { editMode && 
                 <div>
-                    <FormControl as='textarea' value={editableComment.comment} className="Margin-top--"></FormControl>
+                    <FormControl as='textarea' value={editableComment.comment} className="Margin-top--" onChange={(e)=>onCommentUpdated(e)}></FormControl>
                     <div className="Margin-top--">
-                        <Button variant="warning" size="sm">Submit</Button>
+                        <Button variant="warning" size="sm" onClick={onClickEdit}>Submit</Button>
                         <Button variant="danger" size="sm" className="Margin-left--" onClick={cancelEditMode}>Cancel</Button>
                     </div>
                 </div>
