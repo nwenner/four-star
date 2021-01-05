@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useAuth } from "./useAuth";
 
 function Login() {
     const auth = useAuth();
     const history = useHistory();
-    const location = useLocation();
 
     const [email, setEmail] = useState();
     const [pass, setPass] = useState();
@@ -18,8 +17,7 @@ function Login() {
         try {
             let result = await auth.signin(email, pass);
             if (result) {
-                let { from } = location.state || { from: { pathname: "/" } };
-                history.replace(from);
+                history.goBack();
             }
         } catch (error) {
             setErrorMessage(error.message);

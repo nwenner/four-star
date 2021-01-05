@@ -1,19 +1,25 @@
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import { useAuth } from "./useAuth";
 
 function SignInOut() {
     const auth = useAuth();
+    const history = useHistory();
+    
+    console.log(`history is as follows: ${JSON.stringify(history)}`);
+
+    const handleOnClick = () => history.push('/login');
 
     return (
         <Form inline className="Nav-form">
             {auth.user && 
                 <div>
                     <span className="Welcome-user">Welcome {auth.user ? auth.user.attributes.email : null}</span>
-                    <a href="/main" className="Sign-out" onClick={() => auth.signout()}>Sign Out</a>
+                    <Button variant="warning" size="sm" onClick={() => auth.signout()}>Sign Out</Button>
                 </div>
             }
             {!auth.user &&
-                <a href="/login" className="Sign-out">Sign In</a>
+                <Button variant="warning" size="sm" onClick={handleOnClick}>Sign In</Button>
             }
         </Form>
     );
