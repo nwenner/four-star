@@ -41,8 +41,10 @@ function Comment(data) {
             </div>
             <div className="Comment-user-info">
                 <span className="Movie-text-label">User:</span>
-                <span className="Margin-left--">{data.comment.username}</span> 
-                <Badge variant="warning" className={`Card-badge Margin-left--`}>Admin</Badge>
+                <span className="Margin-left--">{data.comment.username}</span>
+                {data.comment.isAdmin && 
+                  <Badge variant="warning" className={`Card-badge Margin-left--`}>Admin</Badge>
+                }
             </div>
             <div className="Margin-top--">{data.comment.comment}</div>
         </ListGroup.Item>

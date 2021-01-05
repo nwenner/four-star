@@ -9,10 +9,6 @@ import MovieRating from '../rating/movieRating';
 import CommentSection from "../comments/commentSection";
 
 function Movie() {
-
-    const history = useHistory();
-    console.log(`What is our history? ${JSON.stringify(history)}`);
-
     const [movie, setMovie]=useState({});
 
     let { id } = useParams();

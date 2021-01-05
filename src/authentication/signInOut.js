@@ -6,8 +6,6 @@ function SignInOut() {
     const auth = useAuth();
     const history = useHistory();
     
-    console.log(`history is as follows: ${JSON.stringify(history)}`);
-
     const handleOnClick = () => history.push('/login');
 
     return (

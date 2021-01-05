@@ -68,7 +68,8 @@ function CommentSection(data) {
             username: auth.user.attributes.email,
             comment: movieReview.comment,
             rating: movieReview.rating,
-            date: datePosted
+            date: datePosted,
+            isAdmin: auth.userGroups
         };
         API.put('fourstar', `/comments`, {
             body: commentToSend
