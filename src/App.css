@@ -123,6 +123,9 @@
 }
 
 /* Utility Classes */
+.Margin-left {
+  margin-left: 1rem;
+}
 
 .Margin-left-- {
   margin-left: 0.5rem;

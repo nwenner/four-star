@@ -1,17 +1,32 @@
 import { Badge, Button, ListGroup } from "react-bootstrap";
 
-import { faStar, faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {useAuth} from '../authentication/useAuth';
+import MovieRating from '../rating/movieRating';
+import EditableRating from "../rating/editableRating";
+import { useState } from "react";
 
 function Comment(data) {
-    let dateValue = new Date(data.comment.date).toLocaleString();
+    const dateValue = new Date(data.comment.date).toLocaleString();
+    const [editableComment, setEditableComment] = useState(data.comment);
 
     const auth = useAuth();
 
     function onClickDelete() {
         data.onDeleteComment(data.comment);
+    }
+
+    function isEditMode() {
+        return auth.user && data.comment.username === auth.user.attributes.email;
+    }
+
+    function onCommentRatingClick(clickedRating) {
+        setEditableComment({
+            ...editableComment,
+            rating: clickedRating
+        });
     }
 
     return (
@@ -26,18 +41,21 @@ function Comment(data) {
                         <FontAwesomeIcon icon={faThumbsDown} color={''}></FontAwesomeIcon>
                     </span>
                 </div>
-                <div className="Comment-container">
-                    <FontAwesomeIcon icon={faStar} color={data.comment.rating >= 0.75 ? '#FFCC00' : ''}></FontAwesomeIcon>
-                    <FontAwesomeIcon icon={faStar} color={data.comment.rating >= 1.75 ? '#FFCC00' : ''}></FontAwesomeIcon>
-                    <FontAwesomeIcon icon={faStar} color={data.comment.rating >= 2.75 ? '#FFCC00' : ''}></FontAwesomeIcon>
-                    <FontAwesomeIcon icon={faStar} color={data.comment.rating >= 3.75 ? '#FFCC00' : ''}></FontAwesomeIcon>
-                    <FontAwesomeIcon icon={faStar} color={data.comment.rating >= 4.75 ? '#FFCC00' : ''}></FontAwesomeIcon>
-                </div>
-                {auth.userGroups && 
-                    <div className="Comment-delete-container">
-                        <Button variant="warning" size="sm" onClick={onClickDelete}>Delete</Button>
-                    </div>
+                { isEditMode() &&
+                    <EditableRating rating={editableComment.rating} onCommentRatingClick={onCommentRatingClick}></EditableRating>
                 }
+                { !isEditMode() &&
+                    <MovieRating rating={data.comment.rating}></MovieRating>
+                }
+                
+                <div className="Comment-delete-container">
+                    { isEditMode() &&
+                        <Button variant="warning" size="sm" onClick={onClickDelete}>Update</Button>
+                    }
+                    {auth.userGroups && 
+                        <Button variant="danger" size="sm" onClick={onClickDelete} className="Margin-left">Delete</Button>
+                    }
+                </div>
             </div>
             <div className="Comment-user-info">
                 <span className="Movie-text-label">User:</span>

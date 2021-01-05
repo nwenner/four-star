@@ -45,6 +45,12 @@ function CommentSection(data) {
         fetchData();
     }, [data.movieId]);
 
+    function hasUserCommented() {
+        return auth.user && comments.find((comment) => {
+            return comment.username === auth.user.attributes.email;
+        });
+    }
+
     function onCommentRatingClick(clickedRating) {
         setMovieReview({
             ...movieReview,
@@ -106,10 +112,10 @@ function CommentSection(data) {
             <ListGroup.Item>
                 {!auth.user && 
                     <span>
-                        Please <a href="/login">Sign In</a> To Continue
+                        Please <a href="/login">Sign In</a> to add a comment
                     </span>
                 }
-                {auth.user && 
+                {auth.user && !hasUserCommented() &&
                     <>
                         <div className="Comment-submission-container">
                             <FormControl as='textarea' placeholder='Type a comment here' style={{paddingLeft: '2px', paddingRight: '2rem'}} onChange={(e)=>onCommentUpdated(e)}></FormControl>

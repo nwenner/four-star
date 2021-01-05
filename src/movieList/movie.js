@@ -9,7 +9,7 @@ import MovieRating from '../rating/movieRating';
 import CommentSection from "../comments/commentSection";
 
 function Movie() {
-    const [movie, setMovie]=useState({});
+    const [movie, setMovie] = useState({});
 
     let { id } = useParams();
 

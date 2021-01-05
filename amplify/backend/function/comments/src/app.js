@@ -226,6 +226,46 @@ app.post(path, function(req, res) {
 });
 
 /**************************************
+* HTTP patch method to update object *
+***************************************/
+
+app.patch(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
+  var params = {};
+  if (userIdPresent && req.apiGateway) {
+    params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
+  } else {
+    params[partitionKeyName] = req.params[partitionKeyName];
+     try {
+      params[partitionKeyName] = convertUrlType(req.params[partitionKeyName], partitionKeyType);
+    } catch(err) {
+      res.statusCode = 500;
+      res.json({error: 'Wrong column type ' + err});
+    }
+  }
+  if (hasSortKey) {
+    try {
+      params[sortKeyName] = convertUrlType(req.params[sortKeyName], sortKeyType);
+    } catch(err) {
+      res.statusCode = 500;
+      res.json({error: 'Wrong column type ' + err});
+    }
+  }
+
+  let removeItemParams = {
+    TableName: tableName,
+    Key: params
+  }
+  dynamodb.update(removeItemParams, (err, data)=> {
+    if(err) {
+      res.statusCode = 500;
+      res.json({error: err, url: req.url});
+    } else {
+      res.json({url: req.url, data: data});
+    }
+  });
+});
+
+/**************************************
 * HTTP remove method to delete object *
 ***************************************/
 
