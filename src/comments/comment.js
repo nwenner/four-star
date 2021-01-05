@@ -1,4 +1,4 @@
-import { Badge, Button, ListGroup } from "react-bootstrap";
+import { Badge, Button, FormControl, ListGroup } from "react-bootstrap";
 
 import { faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,14 +11,25 @@ import { useState } from "react";
 function Comment(data) {
     const dateValue = new Date(data.comment.date).toLocaleString();
     const [editableComment, setEditableComment] = useState(data.comment);
+    const [editMode, setEditMode] = useState(false);
+    const isUpvoteEnabled = false;
 
     const auth = useAuth();
 
     function onClickDelete() {
+        setEditMode(false);
         data.onDeleteComment(data.comment);
     }
 
-    function isEditMode() {
+    function startEditMode() {
+        setEditMode(true);
+    }
+
+    function cancelEditMode() {
+        setEditMode(false);
+    }
+
+    function canEnterEditMode() {
         return auth.user && data.comment.username === auth.user.attributes.email;
     }
 
@@ -32,25 +43,27 @@ function Comment(data) {
     return (
         <ListGroup.Item>
             <div className="Comment-component-container">
-                <span>{dateValue}</span>
-                <div className="Comment-container">
-                    <span>
-                        <FontAwesomeIcon icon={faThumbsUp} className="Comment-upvote-container"></FontAwesomeIcon>
-                    </span>
-                    <span className="Comment-upvote-container">
-                        <FontAwesomeIcon icon={faThumbsDown} color={''}></FontAwesomeIcon>
-                    </span>
-                </div>
-                { isEditMode() &&
+                <span className="Margin-right--">{dateValue}</span>
+                { isUpvoteEnabled &&
+                    <div className="Comment-container">
+                        <span>
+                            <FontAwesomeIcon icon={faThumbsUp} className="Comment-upvote-container"></FontAwesomeIcon>
+                        </span>
+                        <span className="Comment-upvote-container">
+                            <FontAwesomeIcon icon={faThumbsDown} color={''}></FontAwesomeIcon>
+                        </span>
+                    </div>
+                }
+                { editMode &&
                     <EditableRating rating={editableComment.rating} onCommentRatingClick={onCommentRatingClick}></EditableRating>
                 }
-                { !isEditMode() &&
+                { !editMode &&
                     <MovieRating rating={data.comment.rating}></MovieRating>
                 }
                 
                 <div className="Comment-delete-container">
-                    { isEditMode() &&
-                        <Button variant="warning" size="sm" onClick={onClickDelete}>Update</Button>
+                    { canEnterEditMode() && !editMode &&
+                        <Button variant="warning" size="sm" onClick={startEditMode}>Edit</Button>
                     }
                     {auth.userGroups && 
                         <Button variant="danger" size="sm" onClick={onClickDelete} className="Margin-left">Delete</Button>
@@ -64,7 +77,19 @@ function Comment(data) {
                   <Badge variant="warning" className={`Card-badge Margin-left--`}>Admin</Badge>
                 }
             </div>
-            <div className="Margin-top--">{data.comment.comment}</div>
+            { editMode && 
+                <div>
+                    <FormControl as='textarea' value={editableComment.comment} className="Margin-top--"></FormControl>
+                    <div className="Margin-top--">
+                        <Button variant="warning" size="sm">Submit</Button>
+                        <Button variant="danger" size="sm" className="Margin-left--" onClick={cancelEditMode}>Cancel</Button>
+                    </div>
+                </div>
+            }
+            { !editMode &&
+                <div className="Margin-top--">{data.comment.comment}</div>
+            }
+            
         </ListGroup.Item>
     );
 }
