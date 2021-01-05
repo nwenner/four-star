@@ -30,16 +30,17 @@ function Movie() {
     <div>
         <Media style={{backgroundColor: 'white'}}>
             <img
-            className="align-self-start mr-3"
-            src={movie.imgsrc ? movie.imgsrc : '/placeholder.jpg'}
-            alt="Generic placeholder"
-            />
+                className="align-self-start mr-3"
+                src={movie.imgsrc ? movie.imgsrc : '/placeholder.jpg'}
+                alt="Generic placeholder" />
             <Media.Body>
                 <h5>{movie.title}</h5>
                 <Container className="Movie-text-label-container">
                     <Row>
                         <Col xs={12} className="Movie-text-label">
-                            <MovieRating rating={movie.rating} shouldShowRating="true"></MovieRating>
+                            <MovieRating 
+                                rating={movie.rating} 
+                                shouldShowRating="true"></MovieRating>
                         </Col>
                     </Row>
                     <Row>

@@ -6,7 +6,6 @@ function NotPermitted() {
                 <span>You are not permitted to view this page.</span> 
                 <span>Please sign in as a user with appropriate permissions.</span>
             </header>
-
         </div>
     );
 }

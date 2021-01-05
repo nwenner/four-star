@@ -12,7 +12,11 @@ function AdminMovieRow(data) {
         </td>
         <td>{data.movie.title}</td>
         <td>{data.movie.description}</td>
-        <td><Badge variant="warning" className="Card-badge">{data.movie.genre}</Badge></td>
+        <td>
+          <Badge 
+            variant="warning" 
+            className="Card-badge">{data.movie.genre}</Badge>
+        </td>
         <td>
           <FontAwesomeIcon icon={faEdit} color="#FFCC00" size="lg" className="Admin-edit"></FontAwesomeIcon>
           <FontAwesomeIcon icon={faTimesCircle} color="#dc3545" size="lg" className="Admin-edit"></FontAwesomeIcon>

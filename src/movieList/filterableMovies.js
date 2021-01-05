@@ -22,7 +22,9 @@ function FilterableMovies(data) {
             <CardColumns className="Movie-container">
                 {
                     searchResults.map((data,id)=> {
-                        return <MovieCard key={id} movie={data}></MovieCard>
+                        return <MovieCard 
+                                    key={id} 
+                                    movie={data}></MovieCard>
                     })
                 }
             </CardColumns>

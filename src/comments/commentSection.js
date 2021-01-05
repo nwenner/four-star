@@ -115,7 +115,12 @@ function CommentSection(data) {
             <ListGroupItem variant="flush">
                 {
                     comments.map((data,id)=> {
-                        return <Comment key={id} comment={data} onDeleteComment={onDeleteComment} onEditComment={onEditComment} loading={loading}></Comment>
+                        return <Comment 
+                                    key={id} 
+                                    comment={data} 
+                                    onDeleteComment={onDeleteComment} 
+                                    onEditComment={onEditComment} 
+                                    loading={loading}></Comment>
                     })
                 }
                 {!comments.length &&
@@ -136,11 +141,17 @@ function CommentSection(data) {
                 {auth.user && !hasUserCommented() &&
                     <>
                         <div className="Comment-submission-container">
-                            <FormControl className="Comment-text-area" as='textarea' placeholder='Type a comment here' onChange={(e)=>onCommentUpdated(e)}></FormControl>
+                            <FormControl 
+                                className="Comment-text-area" 
+                                as='textarea' 
+                                placeholder='Type a comment here' 
+                                onChange={(e)=>onCommentUpdated(e)}></FormControl>
                         </div>
                         <div className="Comment-rating-container">
                             <span>Rating: </span>
-                            <CommentRating rating={movieReview.rating} onCommentRatingClick={onCommentRatingClick}></CommentRating>
+                            <CommentRating 
+                                rating={movieReview.rating} 
+                                onCommentRatingClick={onCommentRatingClick}></CommentRating>
                         </div>
                         <div>
                             <Button 

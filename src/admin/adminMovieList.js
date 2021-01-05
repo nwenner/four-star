@@ -51,7 +51,9 @@ function AdminMovieList() {
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <FilterableAdminMovies movies={movies} searchTerm={searchTerm}></FilterableAdminMovies>
+                <FilterableAdminMovies 
+                    movies={movies} 
+                    searchTerm={searchTerm}></FilterableAdminMovies>
             </Table>
         </div>
         

@@ -34,7 +34,9 @@ function MovieList() {
                     placeholder="Filter by Title/Genre" 
                     onChange={(e)=>searchMovieList(e)}/>
             </Form.Group>
-            <FilterableMovies movies={movies} searchTerm={searchTerm}></FilterableMovies>
+            <FilterableMovies 
+                movies={movies} 
+                searchTerm={searchTerm}></FilterableMovies>
         </div>
     );
 }
