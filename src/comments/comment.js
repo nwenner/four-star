@@ -10,25 +10,26 @@ import { useState } from "react";
 
 function Comment(data) {
     const dateValue = new Date(data.comment.date).toLocaleString();
-    const [editableComment, setEditableComment] = useState(data.comment);
+    const [editableComment, setEditableComment] = useState({});
     const [editMode, setEditMode] = useState(false);
 
     const isUpvoteEnabled = false;
 
     const auth = useAuth();
 
-    function onClickDelete() {
+    function onSubmitDelete() {
         setEditMode(false);
         data.onDeleteComment(data.comment);
     }
 
-    function onClickEdit() {
+    function onSubmitEdit() {
         setEditMode(false);
         data.onEditComment(editableComment);
     }
 
     function startEditMode() {
         setEditMode(true);
+        setEditableComment(data.comment);
     }
 
     function cancelEditMode() {
@@ -90,7 +91,7 @@ function Comment(data) {
                             size="sm" 
                             className="Margin-left"
                             disabled={data.loading}
-                            onClick={onClickDelete}>Delete</Button>
+                            onClick={onSubmitDelete}>Delete</Button>
                     }
                 </div>
             </div>
@@ -113,7 +114,7 @@ function Comment(data) {
                             variant="warning" 
                             size="sm" 
                             disabled={data.loading}
-                            onClick={onClickEdit}>Submit</Button>
+                            onClick={onSubmitEdit}>Submit</Button>
                         <Button 
                             variant="danger" 
                             size="sm" 
