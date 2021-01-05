@@ -12,8 +12,6 @@ function AdminMovieList() {
 
     const auth = useAuth();
 
-    console.log(`This is auth right now: ${auth.userGroups}`);
-
     useEffect(() => {
         async function fetchData() {
             API.get('fourstar', '/movies')
