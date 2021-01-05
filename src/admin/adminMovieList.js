@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { API } from "aws-amplify";
 
-import { Form } from "react-bootstrap";
+import { Form, Table } from "react-bootstrap";
 
-import FilterableMovies from "../movieList/filterableMovies";
 import { useAuth } from "../authentication/useAuth";
+import FilterableAdminMovies from "./filterableAdminMovies";
 
 function AdminMovieList() {
     const [movies, setMovies]=useState([]);
@@ -33,16 +33,28 @@ function AdminMovieList() {
 
     return (
         <div>
-            <span style={{color: 'white'}}>Welcome Admin</span>
             <Form.Group className="Movie-list-filter-group">
                 <Form.Control 
                     className="Movie-list-filter-input"
                     type="searchInput" 
-                    placeholder="search/filter" 
+                    placeholder="Filter by Title/Genre" 
                     onChange={(e)=>searchMovieList(e)}/>
             </Form.Group>
-            <FilterableMovies movies={movies} searchTerm={searchTerm}></FilterableMovies>
+            <Table striped bordered hover responsive variant="dark">
+                <thead>
+                    <tr>
+                        <th>Movie ID</th>
+                        <th>Thumbnail</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Genre</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <FilterableAdminMovies movies={movies} searchTerm={searchTerm}></FilterableAdminMovies>
+            </Table>
         </div>
+        
     );
 }
 

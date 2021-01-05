@@ -127,6 +127,17 @@
   color: "#FFCC00"
 }
 
+.Admin-edit {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.Admin-thumbnail {
+  width: 150px;
+  height: 84px;
+}
+
 /* Utility Classes */
 .Margin-left {
   margin-left: 1rem;

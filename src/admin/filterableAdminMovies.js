@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import CardColumns from 'react-bootstrap/CardColumns';
-import MovieCard from './movieCard';
+import AdminMovieRow from "./adminMovieRow";
 
-function FilterableMovies(data) {
+function FilterableAdminMovies(data) {
     const [searchResults, setSearchResults] = React.useState([]);
 
     useEffect(() => {
@@ -18,16 +17,14 @@ function FilterableMovies(data) {
     }, [data.movies, data.searchTerm]);
 
     return (
-        <div>
-            <CardColumns className="Movie-container">
-                {
-                    searchResults.map((data,id)=> {
-                        return <MovieCard key={id} movie={data}></MovieCard>
-                    })
-                }
-            </CardColumns>
-        </div>
+        <tbody>
+            {
+                searchResults.map((data,id)=> {
+                    return <AdminMovieRow key={id} movie={data}></AdminMovieRow>
+                })
+            }
+        </tbody>
     );
 }
 
-export default FilterableMovies;
+export default FilterableAdminMovies;
