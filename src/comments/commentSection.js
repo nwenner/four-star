@@ -101,6 +101,8 @@ function CommentSection(data) {
 
     function onEditComment(comment) {
         setLoading(true);
+        const dateUpdated = Date.now();
+        comment.date = dateUpdated;
         API.put('fourstar', `/comments`, {
             body: comment
         }).then(response => {
