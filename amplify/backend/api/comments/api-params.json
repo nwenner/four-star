@@ -1,0 +1,69 @@
+{
+    "paths": [
+        {
+            "name": "/comments",
+            "lambdaFunction": "comments",
+            "privacy": {
+                "protected": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ],
+                "unauth": [
+                    "/GET"
+                ],
+                "userPoolGroups": {
+                    "admin": [
+                        "/POST",
+                        "/GET",
+                        "/PUT",
+                        "/PATCH",
+                        "/DELETE"
+                    ]
+                }
+            },
+            "policyResourceName": "/comments"
+        }
+    ],
+    "resourceName": "comments",
+    "apiName": "comments",
+    "authResourceName": "fourstar78a75a9e",
+    "functionArns": [
+        {
+            "lambdaFunction": "comments"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 1,
+        "authRoleName": "amplify-fourstar-dev-161816-authRole",
+        "unAuthRoleName": "amplify-fourstar-dev-161816-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "comments",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "fourstar78a75a9e",
+            "attributes": [
+                "UserPoolId"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "userPoolGroups",
+            "attributes": [
+                "adminGroupRole"
+            ]
+        }
+    ]
+}
