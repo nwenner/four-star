@@ -1,0 +1,65 @@
+{
+    "paths": [
+        {
+            "name": "/movies",
+            "lambdaFunction": "movies",
+            "privacy": {
+                "protected": true,
+                "auth": [
+                    "/GET"
+                ],
+                "unauth": [
+                    "/GET"
+                ],
+                "userPoolGroups": {
+                    "admin": [
+                        "/POST",
+                        "/GET",
+                        "/PUT",
+                        "/PATCH",
+                        "/DELETE"
+                    ]
+                }
+            },
+            "policyResourceName": "/movies"
+        }
+    ],
+    "resourceName": "movies",
+    "apiName": "movies",
+    "authResourceName": "fourstar78a75a9e",
+    "functionArns": [
+        {
+            "lambdaFunction": "movies"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 1,
+        "authRoleName": "amplify-fourstar-dev-161816-authRole",
+        "unAuthRoleName": "amplify-fourstar-dev-161816-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "movies",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "fourstar78a75a9e",
+            "attributes": [
+                "UserPoolId"
+            ]
+        },
+        {
+            "category": "auth",
+            "resourceName": "userPoolGroups",
+            "attributes": [
+                "adminGroupRole"
+            ]
+        }
+    ]
+}
