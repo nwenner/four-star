@@ -1,7 +1,0 @@
-{
-    "tableName": "comments",
-    "partitionKeyName": "movieid",
-    "partitionKeyType": "S",
-    "sortKeyName": "commentid",
-    "sortKeyType": "S"
-}

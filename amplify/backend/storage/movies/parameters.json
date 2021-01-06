@@ -1,5 +1,0 @@
-{
-    "tableName": "movies",
-    "partitionKeyName": "id",
-    "partitionKeyType": "S"
-}
