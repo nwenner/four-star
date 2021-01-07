@@ -74,7 +74,7 @@
     }
   },
   "api": {
-    "movies": {
+    "fourstar": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
@@ -99,13 +99,7 @@
           "attributes": [
             "adminGroupRole"
           ]
-        }
-      ]
-    },
-    "comments": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
+        },
         {
           "category": "function",
           "resourceName": "comments",
@@ -113,22 +107,14 @@
             "Name",
             "Arn"
           ]
-        },
-        {
-          "category": "auth",
-          "resourceName": "fourstar78a75a9e",
-          "attributes": [
-            "UserPoolId"
-          ]
-        },
-        {
-          "category": "auth",
-          "resourceName": "userPoolGroups",
-          "attributes": [
-            "adminGroupRole"
-          ]
         }
       ]
+    }
+  },
+  "hosting": {
+    "S3AndCloudFront": {
+      "service": "S3AndCloudFront",
+      "providerPlugin": "awscloudformation"
     }
   }
 }

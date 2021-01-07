@@ -58,6 +58,46 @@ const convertUrlType = (param, type) => {
  * HTTP Get method for list objects *
  ********************************/
 
+app.get('/comments/movieid/:id', function(req, res) {
+  var condition = {}
+  condition[partitionKeyName] = {
+    ComparisonOperator: 'EQ'
+  }
+
+  if (userIdPresent && req.apiGateway) {
+    condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
+  } else {
+    try {
+      condition[partitionKeyName]['AttributeValueList'] = [ convertUrlType(req.params[partitionKeyName], partitionKeyType) ];
+    } catch(err) {
+      res.statusCode = 500;
+      res.json({error: 'Wrong column type ' + err});
+    }
+  }
+  const movieid = String(req.params.id);
+  console.log(`MovieId: ${movieid}`);
+
+  let queryParams = {
+    TableName: tableName,
+    KeyConditionExpression: 'movieid = :movieid',
+    ExpressionAttributeValues: {
+        ':movieid': {'S': movieid}
+    }
+  }
+
+  console.log(`tableName: ${tableName}`);
+
+  dynamodb.query(queryParams, (err, data) => {
+    if (err) {
+      console.log(`Err: ${err}`);
+      res.statusCode = 500;
+      res.json({error: 'Could not load items: ' + err});
+    } else {
+      res.json(data.Items.sort((a, b) => b.date - a.date));
+    }
+  });
+});
+
 app.get(path + hashKeyPath, function(req, res) {
   var condition = {}
   condition[partitionKeyName] = {
