@@ -18,7 +18,7 @@ function SignInOut() {
         <Form inline className="Nav-form">
             {auth.user && 
                 <div>
-                    <span className="Welcome-user">Welcome {auth.user ? auth.user.attributes.email : null}</span>
+                    <span className="Welcome-user">Welcome {auth.user ? auth.user.username : null}</span>
                     <Button 
                         variant="warning" 
                         size="sm" 

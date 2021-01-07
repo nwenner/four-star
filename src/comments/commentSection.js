@@ -53,7 +53,7 @@ function CommentSection(data) {
 
     function hasUserCommented() {
         return auth.user && comments.find((comment) => {
-            return comment.username === auth.user.attributes.email;
+            return comment.username === auth.user.username;
         });
     }
 
@@ -77,7 +77,7 @@ function CommentSection(data) {
         const commentToSend = {
             movieid: data.movieId,
             commentid: uuidv4(),
-            username: auth.user.attributes.email,
+            username: auth.user.username,
             comment: movieReview.comment,
             rating: movieReview.rating,
             date: datePosted,

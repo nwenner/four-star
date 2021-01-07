@@ -20,6 +20,7 @@ function Login() {
             let result = await auth.signin(email, pass);
             if (result) {
                 setLoading(false);
+                console.log(`result: ${JSON.stringify(result)}`);
                 history.goBack();
             }
         } catch (error) {
@@ -35,8 +36,8 @@ function Login() {
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Please Login</Form.Label>
                         <Form.Control 
-                            type="email" 
-                            placeholder="Email"
+                            type="input" 
+                            placeholder="User Name"
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </Form.Group>
