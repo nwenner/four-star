@@ -1,28 +1,5 @@
 {
-  "auth": {
-    "fourstar78a75a9e": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false
-    },
-    "userPoolGroups": {
-      "service": "Cognito-UserPool-Groups",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "fourstar78a75a9e",
-          "attributes": [
-            "UserPoolId",
-            "AppClientIDWeb",
-            "AppClientID",
-            "IdentityPoolId"
-          ]
-        }
-      ]
-    }
-  },
+  "auth": {},
   "storage": {
     "movies": {
       "service": "DynamoDB",
@@ -73,44 +50,7 @@
       ]
     }
   },
-  "api": {
-    "fourstar": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "movies",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
-        {
-          "category": "auth",
-          "resourceName": "fourstar78a75a9e",
-          "attributes": [
-            "UserPoolId"
-          ]
-        },
-        {
-          "category": "auth",
-          "resourceName": "userPoolGroups",
-          "attributes": [
-            "adminGroupRole"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "comments",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
-    }
-  },
+  "api": {},
   "hosting": {
     "S3AndCloudFront": {
       "service": "S3AndCloudFront",

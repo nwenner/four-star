@@ -3,14 +3,11 @@ import { API } from "aws-amplify";
 
 import { Form, Table } from "react-bootstrap";
 
-import { useAuth } from "../authentication/useAuth";
 import FilterableAdminMovies from "./filterableAdminMovies";
 
 function AdminMovieList() {
     const [movies, setMovies]=useState([]);
     const [searchTerm, setSearchTerm]=useState('');
-
-    const auth = useAuth();
 
     useEffect(() => {
         async function fetchData() {

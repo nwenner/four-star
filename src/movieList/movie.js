@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { API } from "aws-amplify";
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import Media from 'react-bootstrap/Media';
 import { Col, Container, Row } from "react-bootstrap";

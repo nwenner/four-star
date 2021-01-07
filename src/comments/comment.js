@@ -38,7 +38,7 @@ function Comment(data) {
     }
 
     function canEnterEditMode() {
-        return auth.user && data.comment.username === auth.user.attributes.email;
+        return auth.user && data.comment.username === auth.user.username;
     }
 
     function onCommentRatingClick(clickedRating) {

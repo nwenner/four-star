@@ -5,21 +5,18 @@ import { useHistory } from "react-router-dom";
 import { useAuth } from "./useAuth";
 
 function Login() {
-    const auth = useAuth();
+    const auth = useAuth(); 
     const history = useHistory();
 
     const [email, setEmail] = useState();
     const [pass, setPass] = useState();
     const [errorMessage, setErrorMessage] = useState();
-    const [loading, setLoading] = useState(false);
 
     async function login(event) {
         event.preventDefault();
-        setLoading(true);
         try {
             let result = await auth.signin(email, pass);
             if (result) {
-                setLoading(false);
                 console.log(`result: ${JSON.stringify(result)}`);
                 history.goBack();
             }
@@ -52,7 +49,6 @@ function Login() {
 
                     <Button variant="primary" 
                             type="submit"
-                            disabled={loading}
                             onClick={login}>
                         Log In
                     </Button>
