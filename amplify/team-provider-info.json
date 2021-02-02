@@ -10,6 +10,11 @@
       "StackName": "amplify-fourstar-dev-161816",
       "StackId": "arn:aws:cloudformation:us-east-2:324057214384:stack/amplify-fourstar-dev-161816/14837930-506d-11eb-9c96-0600f1d4ce0c",
       "AmplifyAppId": "d1rulzbcg0ld3f"
+    },
+    "categories": {
+      "auth": {
+        "fourstar6d401028": {}
+      }
     }
   }
 }
