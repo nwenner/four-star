@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+#git
+.gitconfig
+
 # production
 /build
 
