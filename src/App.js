@@ -1,5 +1,6 @@
 import './App.css';
 import Login from './authentication/login';
+import SignUp from './authentication/signUp';
 import MovieList from './movieList/movieList';
 import Movie from './movieList/movie';
 import Container  from 'react-bootstrap/Container';
@@ -30,6 +31,9 @@ function App() {
               </Route>
               <Route path='/logout'>
                 <Login></Login>
+              </Route>
+              <Route path='/signup'>
+                <SignUp></SignUp>
               </Route>
               <Route path='/main'>
                 <MovieList></MovieList>

@@ -23,6 +23,15 @@
   margin-right: 2rem;
 }
 
+.Create-account-text {
+  font-size: 1rem;
+  margin-left: 2rem;
+}
+
+.Create-account-labels {
+  color: white;
+}
+
 .Sign-in-out {
   padding-right: 2rem;
 }
